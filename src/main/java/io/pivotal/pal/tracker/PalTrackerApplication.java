@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import javax.sql.DataSource;
+
 @SpringBootApplication
 public class  PalTrackerApplication{
 
@@ -16,8 +18,8 @@ public class  PalTrackerApplication{
     }
 
     @Bean
-    TimeEntryRepository timeEntryRepository(){
-       return new InMemoryTimeEntryRepository();
+    TimeEntryRepository timeEntryRepository(DataSource datasource){
+        return new JdbcTimeEntryRepository(datasource);
     }
 
     @Bean

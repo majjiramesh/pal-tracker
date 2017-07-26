@@ -3,3 +3,5 @@
  - name: pal-tracker
    path: build/libs/pal-tracker.jar
    host: gs-pal-tracker
+   services:
+     - tracker-database
