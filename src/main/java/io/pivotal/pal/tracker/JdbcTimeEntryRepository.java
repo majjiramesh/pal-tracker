@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcTimeEntryRepository implements TimeEntryRepository {
@@ -97,7 +98,7 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
 
             List<TimeEntry> rows = jdbcTemplate.query("select id, project_id, user_id, date, hours from time_entries", mapper);
             if ((rows == null) || (rows.size()== 0)) {
-                return null;
+                return new ArrayList<>();
             } else {
                 return rows;
             }
